@@ -46,36 +46,31 @@ public class HotelTest {
         eventspaces.add(confroom1);
         eventspaces.add(confroom2);
 
-        Hotel = new Hotel(rooms, eventspaces);
+        hotel = new Hotel(rooms, eventspaces);
     }
 
 
     @Test
     public void testCheckRoomAvailability() {
-        assertEquals(true, bedroom1.checkAvailability());
-        assertEquals(true, bedroom2.checkAvailability());
+        assertEquals(true, hotel.checkRoomAvailability());
+    }
+
+    @Test
+    public void testCheckSpaceAvailability(){
+        assertEquals(true, hotel.checkSpaceAvailability());
+    }
+
+    @Test
+    public void testCheckInGuest() {
+        //ARRANGE
+            //guest 1 and guest 2 and the room they are checking in to
+        //ACT
+            //add guests to the room
+        bedroom1.checkIn(guest1);
+        bedroom1.checkIn(guest1);
+        //ASSERT
+            //assert that bedroom1 has 2 guests in it.
+        assertEquals(2, hotel.checkInGuests());
     }
 }
-//    @Test
-//    public void player1Wins(){
-//        player1.addCardToHand(new Card(Suit.CLUBS, Rank.ACE));
-//        player2.addCardToHand(new Card(Suit.DIAMONDS, Rank.EIGHT));
-//        Player winner = game.checkWinner();
-//        assertEquals("Player 1", winner.getName());
-//    }
-//
-//    @Test
-//    public void player2Wins(){
-//        player1.addCardToHand(new Card(Suit.CLUBS, Rank.THREE));
-//        player2.addCardToHand(new Card(Suit.DIAMONDS, Rank.EIGHT));
-//        Player winner = game.checkWinner();
-//        assertEquals("Player 2", winner.getName());
-//    }
-//
-//    @Test
-//    public void checkDraw(){
-//        player1.addCardToHand(new Card(Suit.CLUBS, Rank.ACE));
-//        player2.addCardToHand(new Card(Suit.DIAMONDS, Rank.ACE));
-//        Player winner = game.checkWinner();
-//        assertEquals(null, winner);
-//    }
+

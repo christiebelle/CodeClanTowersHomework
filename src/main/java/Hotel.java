@@ -22,7 +22,21 @@ public class Hotel {
             return false;
         }
 
+        public boolean checkSpaceAvailability() {
+            for (ConferenceRoom space : eventspaces){
+                if(space.checkHeadCount() == 0) {
+                    return true;
+                }else {
+                    return false;
+                }
+                }
+            return false;
         }
+
+    public int checkInGuests(Bedroom room, Guest guest) {
+
+    }
+}
 
 //
 //        public void deal(){
