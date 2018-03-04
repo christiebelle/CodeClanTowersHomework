@@ -13,12 +13,17 @@ public class BedroomTest {
     public void setUp() throws Exception {
         guest1 = new Guest("Marc Antony");
         guest2 = new Guest("Cleopatra");
-        bedroom1 = new Bedroom(2, 100, "Double");
+        bedroom1 = new Bedroom(2, 100, "Double", 10);
     }
 
     @Test
     public void testRoomCapacity() {
         assertEquals(2, bedroom1.getCapacity());
+    }
+
+    @Test
+    public void testRoomNumber() {
+        assertEquals(10, bedroom1.getRoomNumber());
     }
 
     @Test

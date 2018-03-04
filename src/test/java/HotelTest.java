@@ -28,23 +28,17 @@ public class HotelTest {
     public void before() {
         guest1 = new Guest("William Marshal");
         guest2 = new Guest("Isabelle DeClare");
-        guest3 = new Guest("Mickey Mouse");
-        guest4 = new Guest("Minnie Mouse");
 
-        bedroom1 = new Bedroom(2, 150, "King");
-        bedroom2 = new Bedroom(1, 75, "Single");
+        bedroom1 = new Bedroom(2, 150, "King", 15);
 
         confroom1 = new ConferenceRoom(250, 500, "Libellule Room", "Theatre");
-        confroom2 = new ConferenceRoom(25, 500, "Brindille Room", "Boardroom");
 
         rooms = new ArrayList<>();
         eventspaces = new ArrayList<>();
 
         rooms.add(bedroom1);
-        rooms.add(bedroom2);
 
         eventspaces.add(confroom1);
-        eventspaces.add(confroom2);
 
         hotel = new Hotel(rooms, eventspaces);
     }
@@ -67,10 +61,17 @@ public class HotelTest {
         //ACT
             //add guests to the room
         bedroom1.checkIn(guest1);
-        bedroom1.checkIn(guest1);
         //ASSERT
             //assert that bedroom1 has 2 guests in it.
-        assertEquals(2, hotel.checkInGuests());
+        assertEquals(1, bedroom1.checkHeadCount());
+    }
+
+    @Test
+    public void testCheckOutGuest() {
+        bedroom1.checkIn(guest1);
+        bedroom1.checkIn(guest2);
+        bedroom1.checkOut();
+        assertEquals(1, bedroom1.checkHeadCount());
     }
 }
 

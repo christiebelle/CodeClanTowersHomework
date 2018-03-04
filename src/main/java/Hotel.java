@@ -4,60 +4,50 @@ public class Hotel {
 
     ArrayList<Bedroom> rooms;
     ArrayList<ConferenceRoom> eventspaces;
-    ArrayList<Guest> visitors;
+    Guest guest;
 
-        public Hotel(ArrayList<Bedroom> rooms, ArrayList<ConferenceRoom> eventspaces) {
-            this.rooms = rooms;
-            this.eventspaces = eventspaces;
+    public Hotel(ArrayList<Bedroom> rooms, ArrayList<ConferenceRoom> eventspaces) {
+        this.rooms = rooms;
+        this.eventspaces = eventspaces;
+    }
+
+
+    public boolean checkRoomAvailability() {
+        for (Bedroom room : rooms) {
+            if (room.checkHeadCount() == 0) {
+                return true;
+            } else {
+                return false;
+            }
         }
+        return false;
+    }
 
-
-        public boolean checkRoomAvailability() {
-            for (Bedroom room : rooms){
-                if(room.checkHeadCount() == 0) {
-                    return true;
-                }else {
-                    return false;
-                }
-                }
-            return false;
+    public boolean checkSpaceAvailability() {
+        for (ConferenceRoom space : eventspaces) {
+            if (space.checkHeadCount() == 0)
+                return true;
+            else
+                return false;
         }
+        return false;
+    }
 
-        public boolean checkSpaceAvailability() {
-            for (ConferenceRoom space : eventspaces){
-                if(space.checkHeadCount() == 0) {
-                    return true;
-                }else {
-                    return false;
-                }
-                }
-            return false;
+    public void checkInGuests(int number) {
+        for (Bedroom room : rooms) {
+            if (room.getRoomNumber() == number){
+                room.checkIn(guest);
+            }
         }
+    }
 
-    public int checkInGuests(Guest guest) {
-
-
+    public void checkOutGuests(int number){
+        for(Bedroom room : rooms){
+            if(room.getRoomNumber() == number){
+                room.checkOut();
+            }
+        }
     }
 }
 
-//
-//        public void deal(){
-//            for (Player player : players){
-//                for(int i = 0; i<2; i++) {
-//                    player.addCardToHand(deck.getCard());
-//                }
-//            }
-//        }
-//
-//        public Player checkWinner(){
-//            Player player1 = players.get(0);
-//            Player player2 = players.get(1);
-//            if (player1.getHandValue() == player2.getHandValue()){
-//                return null;
-//            } else {
-//                return player1.getHandValue() > player2.getHandValue() ?  player1 :  player2;
-//            }
-//
-//        }
-//    }
-//
+
