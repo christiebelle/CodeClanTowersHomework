@@ -4,6 +4,7 @@ public class Hotel {
 
     ArrayList<Bedroom> rooms;
     ArrayList<ConferenceRoom> eventspaces;
+    ArrayList<Guest> visitors;
 
         public Hotel(ArrayList<Bedroom> rooms, ArrayList<ConferenceRoom> eventspaces) {
             this.rooms = rooms;
@@ -33,7 +34,8 @@ public class Hotel {
             return false;
         }
 
-    public int checkInGuests(Bedroom room, Guest guest) {
+    public int checkInGuests(Guest guest) {
+
 
     }
 }
