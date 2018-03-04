@@ -5,7 +5,7 @@ public abstract class Room {
     private int rate;
     private ArrayList guests;
 
-    public Room(int capacity, int rate){
+    public Room(int capacity, int rate) {
         this.capacity = capacity;
         this.rate = rate;
         this.guests = new ArrayList<Guest>();
@@ -27,11 +27,11 @@ public abstract class Room {
         this.guests.add(newGuest);
     }
 
-    public void checkOut(){
+    public void checkOut() {
         this.guests.remove(0);
     }
 
-    public int checkHeadCount(){
+    public int checkHeadCount() {
         return this.guests.size();
     }
 }
